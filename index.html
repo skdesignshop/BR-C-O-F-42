@@ -21,9 +21,7 @@
   --border:#1e2c1f;
   --green:#39ff6a;
   --green2:#1d8b40;
-  --lime:#b6ff3a;
   --blue:#2196ff;
-  --blue2:#0077ff;
   --text:#effff1;
   --muted:#829786;
   --danger:#ff5c5c;
@@ -36,8 +34,7 @@
   -webkit-tap-highlight-color:transparent;
 }
 
-html,
-body{
+html,body{
   margin:0;
   padding:0;
   min-height:100%;
@@ -50,15 +47,17 @@ body{
   overflow-x:hidden;
 }
 
-button,
-input,
-textarea,
-select{
+button,input,textarea{
   font-family:inherit;
 }
 
 button{
   -webkit-tap-highlight-color:transparent;
+  cursor:pointer;
+}
+
+button:active{
+  transform:scale(.97);
 }
 
 ::-webkit-scrollbar{
@@ -73,10 +72,9 @@ button{
   padding-bottom:155px;
 }
 
-
-/* =====================================================
+/* =========================
    HEADER
-===================================================== */
+========================= */
 
 .top{
   position:relative;
@@ -84,11 +82,6 @@ button{
   padding:12px 14px 10px;
   background:rgba(7,11,7,.94);
 }
-
-
-/* =====================================================
-   LOGO
-===================================================== */
 
 .logo{
   width:100%;
@@ -98,18 +91,15 @@ button{
   display:block;
   border-radius:20px;
   border:1.5px solid var(--border);
-
   box-shadow:
     0 0 25px rgba(57,255,106,.14),
     0 0 80px rgba(57,255,106,.05);
-
   margin-bottom:13px;
 }
 
-
-/* =====================================================
+/* =========================
    SEARCH
-===================================================== */
+========================= */
 
 .search{
   position:relative;
@@ -155,43 +145,28 @@ button{
   color:var(--muted);
 }
 
-
-/* =====================================================
+/* =========================
    CATEGORY
-===================================================== */
+========================= */
 
 .category-button{
   width:100%;
   height:52px;
   border:1.5px solid var(--green);
   border-radius:15px;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(57,255,106,.16),
-      rgba(57,255,106,.04)
-    );
-
+  background:linear-gradient(
+    135deg,
+    rgba(57,255,106,.16),
+    rgba(57,255,106,.04)
+  );
   color:var(--green);
-
   display:flex;
   align-items:center;
   justify-content:space-between;
-
   padding:0 16px;
-
   font-size:14px;
   font-weight:800;
-
-  cursor:pointer;
-
-  box-shadow:
-    0 0 15px rgba(57,255,106,.12);
-}
-
-.category-button:active{
-  transform:scale(.98);
+  box-shadow:0 0 15px rgba(57,255,106,.12);
 }
 
 .category-button .left{
@@ -212,11 +187,9 @@ button{
   display:none;
   margin-top:8px;
   padding:9px;
-
   background:var(--card);
   border:1px solid var(--border);
   border-radius:15px;
-
   gap:7px;
   flex-wrap:wrap;
 }
@@ -228,32 +201,23 @@ button{
 .category{
   flex:1 1 calc(50% - 7px);
   min-height:42px;
-
   border-radius:11px;
   border:1px solid var(--border);
-
   background:var(--bg2);
   color:var(--muted);
-
   font-size:12px;
   font-weight:800;
-
-  cursor:pointer;
 }
 
 .category.active{
   background:var(--green);
   color:#031108;
   border-color:var(--green);
-
-  box-shadow:
-    0 0 15px rgba(57,255,106,.4);
 }
 
-
-/* =====================================================
+/* =========================
    MAIN
-===================================================== */
+========================= */
 
 main{
   padding:15px;
@@ -263,14 +227,10 @@ main{
   display:flex;
   align-items:center;
   gap:8px;
-
   margin:4px 0 13px;
-
   color:var(--green);
-
   font-family:'Archivo Black',sans-serif;
   font-size:12px;
-
   letter-spacing:.13em;
   text-transform:uppercase;
 }
@@ -279,19 +239,16 @@ main{
   content:"";
   height:1px;
   flex:1;
-
-  background:
-    linear-gradient(
-      90deg,
-      var(--green2),
-      transparent
-    );
+  background:linear-gradient(
+    90deg,
+    var(--green2),
+    transparent
+  );
 }
 
-
-/* =====================================================
+/* =========================
    PRODUCTS
-===================================================== */
+========================= */
 
 .grid{
   display:grid;
@@ -299,126 +256,92 @@ main{
   gap:11px;
 }
 
-.product{
-  background:var(--card);
-  border:1.5px solid var(--border);
-  border-radius:16px;
-
-  padding:9px;
+.product-card{
+  position:relative;
   overflow:hidden;
-
-  cursor:pointer;
-
-  transition:.15s;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:17px;
+  transition:.2s;
 }
 
-.product:active{
-  transform:scale(.97);
+.product-card:hover{
+  border-color:var(--green2);
+}
+
+.product-image-wrap{
+  position:relative;
+  width:100%;
+  aspect-ratio:1/1;
+  background:var(--bg2);
+  overflow:hidden;
 }
 
 .product-image{
-  position:relative;
-
-  height:125px;
-
-  border-radius:12px;
-  overflow:hidden;
-
-  background:
-    radial-gradient(
-      circle at 30% 20%,
-      rgba(57,255,106,.18),
-      transparent 65%
-    ),
-    var(--bg2);
-
-  border:1px solid var(--border);
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  margin-bottom:10px;
-}
-
-.product-image img{
   width:100%;
   height:100%;
   object-fit:cover;
   display:block;
 }
 
-.product-image-fallback{
-  font-size:45px;
-}
-
-.product-tag{
+.product-badge{
   position:absolute;
-
-  top:7px;
-  left:7px;
-
-  z-index:2;
-
-  background:rgba(4,15,7,.85);
-  color:var(--green);
-
-  border:1px solid var(--green2);
-
-  padding:3px 7px;
-
+  top:9px;
+  left:9px;
+  padding:5px 8px;
   border-radius:20px;
-
+  background:rgba(7,11,7,.88);
+  border:1px solid var(--green);
+  color:var(--green);
   font-size:8px;
-  font-weight:800;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.04em;
 }
 
-.product h3{
-  margin:0 0 4px;
+.product-content{
+  padding:10px;
+}
 
+.product-name{
+  margin:0 0 5px;
   font-size:13px;
-  line-height:1.25;
+  font-weight:900;
 }
 
 .product-description{
   color:var(--muted);
-
-  font-size:10px;
-  line-height:1.35;
-
-  height:28px;
-  overflow:hidden;
-
-  margin-bottom:8px;
+  font-size:9.5px;
+  line-height:1.4;
+  min-height:27px;
+  margin-bottom:9px;
 }
 
 .product-bottom{
   display:flex;
   align-items:center;
   justify-content:space-between;
+  gap:7px;
 }
 
-.price{
+.product-price{
   color:var(--green);
-  font-size:14px;
-  font-weight:800;
+  font-size:12px;
+  font-weight:900;
 }
 
-.add{
-  width:28px;
-  height:28px;
-
-  border-radius:50%;
-  border:0;
-
-  background:var(--green);
-  color:#031108;
-
-  font-size:18px;
-  font-weight:900;
-
-  box-shadow:
-    0 0 13px rgba(57,255,106,.45);
+.add-button{
+  width:32px;
+  height:32px;
+  border:1px solid var(--green);
+  border-radius:10px;
+  background:rgba(57,255,106,.1);
+  color:var(--green);
+  font-size:20px;
+  font-weight:700;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 .empty{
@@ -432,58 +355,37 @@ main{
   margin-bottom:10px;
 }
 
-
-/* =====================================================
-   BOTTOM NAV
-===================================================== */
+/* =========================
+   NAV
+========================= */
 
 .bottom-nav{
   position:fixed;
-
   left:0;
   right:0;
   bottom:0;
-
   z-index:50;
-
   max-width:520px;
   margin:auto;
-
-  padding:
-    8px
-    8px
-    calc(8px + var(--safe-bottom));
-
+  padding:8px 8px calc(8px + var(--safe-bottom));
   background:rgba(8,13,8,.95);
-
   backdrop-filter:blur(15px);
-
   border-top:1px solid var(--border);
-
   display:flex;
 }
 
 .nav-btn{
   flex:1;
-
   border:0;
   background:none;
-
   color:var(--muted);
-
   padding:6px 0;
-
   display:flex;
   flex-direction:column;
   align-items:center;
-
   gap:4px;
-
   font-size:9.5px;
   font-weight:800;
-
-  cursor:pointer;
-
   position:relative;
 }
 
@@ -498,32 +400,23 @@ main{
 
 .badge{
   position:absolute;
-
   top:0;
   right:20%;
-
   min-width:16px;
   height:16px;
-
   padding:0 4px;
-
   display:none;
-
   align-items:center;
   justify-content:center;
-
   background:var(--danger);
   color:#fff;
-
   border-radius:20px;
-
   font-size:8px;
 }
 
-
-/* =====================================================
-   DEVELOPER CAPSULE
-===================================================== */
+/* =========================
+   DEVELOPER
+========================= */
 
 .developer-wrap{
   width:100%;
@@ -535,90 +428,51 @@ main{
 .developer-badge{
   width:100%;
   max-width:430px;
-
   min-height:48px;
-
   display:flex;
   align-items:center;
   justify-content:center;
   gap:7px;
-
   padding:11px 18px;
-
   border-radius:30px;
-
   text-decoration:none;
-
   color:#fff;
-
   font-size:11px;
   font-weight:900;
-
   letter-spacing:.04em;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(0,119,255,.30),
-      rgba(33,150,243,.10)
-    );
-
+  background:linear-gradient(
+    135deg,
+    rgba(0,119,255,.30),
+    rgba(33,150,243,.10)
+  );
   border:1px solid rgba(33,150,255,.85);
-
   box-shadow:
     0 0 8px rgba(0,119,255,.75),
     0 0 22px rgba(0,119,255,.45),
-    inset 0 0 12px rgba(33,150,255,.12);
-
-  transition:.18s;
-}
-
-.developer-badge:hover{
-  transform:translateY(-1px);
-
-  box-shadow:
-    0 0 10px rgba(0,119,255,.9),
-    0 0 30px rgba(0,119,255,.65);
-}
-
-.developer-badge:active{
-  transform:scale(.97);
+    inset 0 0 12px rgba(33,150,243,.12);
 }
 
 .developer-blue{
   color:#2196ff;
-  text-shadow:
-    0 0 8px rgba(33,150,255,.9),
-    0 0 15px rgba(33,150,255,.65);
 }
 
 .verified-blue{
   width:18px;
   height:18px;
-
   flex:0 0 18px;
-
   display:inline-flex;
   align-items:center;
   justify-content:center;
-
   border-radius:50%;
-
   background:#1687ff;
   color:#fff;
-
   font-size:11px;
   font-weight:900;
-
-  box-shadow:
-    0 0 8px rgba(33,150,255,.95),
-    0 0 15px rgba(33,150,255,.55);
 }
 
-
-/* =====================================================
+/* =========================
    VIEWS
-===================================================== */
+========================= */
 
 .view{
   display:none;
@@ -631,55 +485,40 @@ main{
 .page-title{
   font-family:'Archivo Black',sans-serif;
   font-size:23px;
-
   margin-bottom:17px;
 }
 
-
-/* =====================================================
+/* =========================
    CART
-===================================================== */
+========================= */
 
 .cart-item{
   display:flex;
   align-items:center;
-
   gap:10px;
-
   padding:11px;
   margin-bottom:9px;
-
   border:1px solid var(--border);
-
   background:var(--card);
-
   border-radius:14px;
 }
 
 .cart-thumb{
   width:52px;
   height:52px;
-
   flex:0 0 52px;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
   border-radius:11px;
-
   background:var(--bg2);
-
   overflow:hidden;
-
-  font-size:25px;
 }
 
 .cart-thumb img{
   width:100%;
   height:100%;
   object-fit:cover;
-  display:block;
 }
 
 .cart-info{
@@ -703,68 +542,55 @@ main{
 
 .cart-price{
   color:var(--green);
-
   font-size:12.5px;
   font-weight:800;
-
   margin-bottom:5px;
 }
 
 .qty{
   display:flex;
   align-items:center;
+  justify-content:flex-end;
   gap:6px;
 }
 
 .qty button{
-  width:22px;
-  height:22px;
-
+  width:24px;
+  height:24px;
   border:1px solid var(--border);
   border-radius:6px;
-
   background:var(--card2);
   color:var(--green);
+  font-size:16px;
 }
 
 .qty span{
   min-width:15px;
   text-align:center;
-
   font-size:11px;
   font-weight:800;
 }
 
 .summary{
   margin-top:15px;
-
   padding:15px;
-
   background:var(--card);
-
   border:1px solid var(--green2);
-
   border-radius:16px;
 }
 
 .summary-row{
   display:flex;
   justify-content:space-between;
-
   color:var(--muted);
-
   font-size:12px;
-
   margin-bottom:8px;
 }
 
 .summary-row.total{
   padding-top:10px;
-
   border-top:1px solid var(--border);
-
   color:var(--text);
-
   font-size:16px;
   font-weight:800;
 }
@@ -773,104 +599,75 @@ main{
   color:var(--green);
 }
 
+.submit{
+  width:100%;
+  height:50px;
+  margin-top:8px;
+  border:0;
+  border-radius:13px;
+  background:var(--green);
+  color:#031108;
+  font-size:14px;
+  font-weight:900;
+  box-shadow:0 0 20px rgba(57,255,106,.3);
+}
 
-/* =====================================================
-   INFORMATION
-===================================================== */
+/* =========================
+   INFO
+========================= */
 
 .info-card{
   background:var(--card);
-
   border:1px solid var(--border);
-
   border-radius:16px;
-
   padding:16px;
-
   margin-bottom:11px;
 }
 
 .info-card h3{
   margin:0 0 8px;
-
   color:var(--green);
-
   font-size:15px;
 }
 
 .info-card p{
   margin:0;
-
   color:var(--muted);
-
   line-height:1.55;
-
   font-size:12.5px;
 }
-
-
-/* =====================================================
-   SOCIALS
-===================================================== */
 
 .socials{
   display:flex;
   flex-direction:column;
-
   gap:9px;
-
   margin-top:12px;
 }
 
 .social{
   display:flex;
   align-items:center;
-
   gap:12px;
-
   padding:13px;
-
   border-radius:14px;
-
   border:1px solid var(--border);
-
   background:var(--card);
-
   color:var(--text);
-
   text-decoration:none;
-
   font-weight:800;
   font-size:13px;
-
-  transition:.15s;
-}
-
-.social:hover{
-  border-color:var(--green);
-
-  box-shadow:
-    0 0 15px rgba(57,255,106,.16);
 }
 
 .social-icon{
   width:39px;
   height:39px;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
   flex:0 0 39px;
-
   border-radius:11px;
-
   background:var(--green);
   color:#031108;
-
-  font-weight:900;
-  font-size:17px;
-
   overflow:hidden;
 }
 
@@ -878,56 +675,42 @@ main{
   width:100%;
   height:100%;
   object-fit:cover;
-  display:block;
 }
 
-
-/* =====================================================
+/* =========================
    PROFILE
-===================================================== */
+========================= */
 
 .profile{
   text-align:center;
-
   padding:10px 0 20px;
 }
 
 .avatar{
   width:82px;
   height:82px;
-
   margin:auto;
-
   border-radius:50%;
-
   border:2px solid var(--green);
-
   overflow:hidden;
-
-  box-shadow:
-    0 0 25px rgba(57,255,106,.3);
+  box-shadow:0 0 25px rgba(57,255,106,.3);
 }
 
 .avatar img{
   width:100%;
   height:100%;
-
   object-fit:cover;
 }
 
 .profile-name{
   margin-top:10px;
-
   font-family:'Archivo Black',sans-serif;
-
   font-size:19px;
 }
 
 .profile-sub{
   margin-top:4px;
-
   color:var(--muted);
-
   font-size:11px;
 }
 
@@ -935,39 +718,27 @@ main{
   display:flex;
   justify-content:space-between;
   align-items:center;
-
+  gap:10px;
   padding:14px;
-
   background:var(--card);
-
   border:1px solid var(--border);
-
   border-radius:13px;
-
   margin-bottom:8px;
-
   font-size:12.5px;
   font-weight:700;
 }
 
-
-/* =====================================================
-   PRODUCT MODAL
-===================================================== */
+/* =========================
+   CHECKOUT
+========================= */
 
 .overlay{
   position:fixed;
-
   inset:0;
-
   z-index:80;
-
   background:rgba(0,0,0,.7);
-
   opacity:0;
-
   pointer-events:none;
-
   transition:.2s;
 }
 
@@ -978,33 +749,21 @@ main{
 
 .sheet{
   position:fixed;
-
   z-index:81;
-
   left:0;
   right:0;
   bottom:0;
-
   max-width:520px;
   margin:auto;
-
   max-height:90vh;
-
   overflow:auto;
-
   background:var(--bg2);
-
   border:1px solid var(--border);
   border-bottom:0;
-
   border-radius:22px 22px 0 0;
-
   transform:translateY(100%);
-
   transition:.28s;
-
-  padding-bottom:
-    calc(22px + var(--safe-bottom));
+  padding-bottom:calc(22px + var(--safe-bottom));
 }
 
 .sheet.open{
@@ -1014,366 +773,278 @@ main{
 .handle{
   width:38px;
   height:4px;
-
   background:var(--border);
-
   border-radius:5px;
-
   margin:10px auto;
 }
 
 .close{
   position:absolute;
-
   right:14px;
   top:12px;
-
   width:31px;
   height:31px;
-
   border-radius:50%;
-
   border:1px solid var(--border);
-
   background:rgba(0,0,0,.5);
-
   color:#fff;
 }
 
-.sheet-image{
-  height:210px;
-
-  margin:10px 14px;
-
-  border-radius:16px;
-
-  background:
-    radial-gradient(
-      circle at 30% 20%,
-      rgba(57,255,106,.2),
-      transparent 60%
-    ),
-    var(--card);
-
-  border:1px solid var(--border);
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  overflow:hidden;
-
-  font-size:75px;
-}
-
-.sheet-image img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-}
-
 .sheet-body{
-  padding:8px 16px;
-}
-
-.sheet-tag{
-  color:var(--green);
-
-  border:1px solid var(--green2);
-
-  background:rgba(57,255,106,.07);
-
-  border-radius:20px;
-
-  display:inline-block;
-
-  padding:4px 9px;
-
-  font-size:9px;
-  font-weight:800;
+  padding:12px 16px;
 }
 
 .sheet h2{
   font-family:'Archivo Black',sans-serif;
-
   font-size:21px;
-
   margin:9px 0;
 }
 
 .sheet-description{
   color:var(--muted);
-
   font-size:12.5px;
-
   line-height:1.55;
-}
-
-.weights{
-  display:flex;
-  flex-wrap:wrap;
-
-  gap:7px;
-
-  margin:12px 0 18px;
-}
-
-.weight{
-  flex:1;
-
-  min-width:70px;
-
-  padding:10px;
-
-  text-align:center;
-
-  border-radius:11px;
-
-  border:1px solid var(--border);
-
-  background:var(--card);
-
-  color:var(--muted);
-
-  cursor:pointer;
-}
-
-.weight.active{
-  border-color:var(--green);
-
-  color:var(--green);
-
-  background:rgba(57,255,106,.08);
-}
-
-.sheet-quantity{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-
-  margin-bottom:15px;
-}
-
-.big-qty{
-  display:flex;
-  align-items:center;
-
-  gap:15px;
-
-  padding:6px 10px;
-
-  background:var(--card);
-
-  border:1px solid var(--border);
-
-  border-radius:11px;
-}
-
-.big-qty button{
-  width:28px;
-  height:28px;
-
-  border:0;
-
-  background:var(--card2);
-
-  color:var(--green);
-
-  border-radius:7px;
-
-  font-size:17px;
-}
-
-.add-cart{
-  width:100%;
-  height:51px;
-
-  border:0;
-
-  border-radius:14px;
-
-  background:var(--green);
-
-  color:#031108;
-
-  font-weight:900;
-
-  font-size:14px;
-
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-
-  padding:0 16px;
-
-  box-shadow:
-    0 0 22px rgba(57,255,106,.35);
-}
-
-
-/* =====================================================
-   CHECKOUT
-===================================================== */
-
-.form{
-  display:flex;
-  flex-direction:column;
-
-  gap:10px;
-}
-
-.form-group label{
-  display:block;
-
-  color:var(--muted);
-
-  font-size:10px;
-  font-weight:800;
-
-  text-transform:uppercase;
-
-  margin-bottom:5px;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select{
-  width:100%;
-
-  background:var(--card);
-
-  color:var(--text);
-
-  border:1px solid var(--border);
-
-  border-radius:12px;
-
-  padding:12px;
-
-  outline:none;
-
-  font-size:13px;
-}
-
-.form-group textarea{
-  min-height:85px;
-
-  resize:none;
-}
-
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus{
-  border-color:var(--green);
 }
 
 .delivery-options{
   display:grid;
-
   grid-template-columns:1fr 1fr;
-
   gap:8px;
+  margin:16px 0;
 }
 
 .delivery-option{
-  padding:12px;
-
+  padding:14px 8px;
   text-align:center;
-
   background:var(--card);
-
   border:1px solid var(--border);
-
   border-radius:12px;
-
   font-size:11px;
   font-weight:800;
-
-  cursor:pointer;
+  color:var(--text);
 }
 
 .delivery-option.active{
   border-color:var(--green);
-
   background:rgba(57,255,106,.09);
-
   color:var(--green);
 }
 
-.submit{
-  width:100%;
-  height:50px;
-
-  margin-top:5px;
-
-  border:0;
-
-  border-radius:13px;
-
-  background:var(--green);
-
-  color:#031108;
-
-  font-size:14px;
-  font-weight:900;
-
-  box-shadow:
-    0 0 20px rgba(57,255,106,.3);
+.address-wrap{
+  display:none;
+  margin-bottom:12px;
 }
 
+.address-wrap.visible{
+  display:block;
+}
 
-/* =====================================================
+.address-wrap label{
+  display:block;
+  color:var(--muted);
+  font-size:10px;
+  font-weight:800;
+  text-transform:uppercase;
+  margin-bottom:5px;
+}
+
+.address-wrap textarea{
+  width:100%;
+  min-height:90px;
+  background:var(--card);
+  color:var(--text);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:12px;
+  outline:none;
+  font-size:13px;
+  resize:none;
+}
+
+.address-wrap textarea:focus{
+  border-color:var(--green);
+}
+
+.order-summary{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:12px;
+  margin-bottom:12px;
+  font-size:11px;
+  line-height:1.6;
+  color:var(--muted);
+}
+
+.order-summary strong{
+  color:var(--text);
+}
+
+/* =========================
+   PRODUCT MODAL
+========================= */
+
+.product-overlay{
+  position:fixed;
+  inset:0;
+  z-index:90;
+  background:rgba(0,0,0,.75);
+  opacity:0;
+  pointer-events:none;
+  transition:.2s;
+}
+
+.product-overlay.open{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.product-sheet{
+  position:fixed;
+  z-index:91;
+  left:0;
+  right:0;
+  bottom:0;
+  max-width:520px;
+  max-height:94vh;
+  margin:auto;
+  overflow:auto;
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-bottom:0;
+  border-radius:24px 24px 0 0;
+  transform:translateY(100%);
+  transition:.28s;
+  padding-bottom:calc(22px + var(--safe-bottom));
+}
+
+.product-sheet.open{
+  transform:translateY(0);
+}
+
+.product-detail-image{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  display:block;
+  border-radius:20px 20px 0 0;
+}
+
+.product-detail-body{
+  padding:15px;
+}
+
+.detail-badge{
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:20px;
+  background:rgba(57,255,106,.1);
+  color:var(--green);
+  border:1px solid var(--green2);
+  font-size:9px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+
+.detail-title{
+  font-family:'Archivo Black',sans-serif;
+  font-size:23px;
+  margin:10px 0 7px;
+}
+
+.detail-description{
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.6;
+  margin-bottom:16px;
+}
+
+.options-title{
+  color:var(--text);
+  font-size:12px;
+  font-weight:900;
+  margin-bottom:8px;
+}
+
+.price-options{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  margin-bottom:13px;
+}
+
+.price-option{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:13px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:var(--card);
+  color:var(--text);
+  text-align:left;
+}
+
+.price-option.active{
+  border-color:var(--green);
+  background:rgba(57,255,106,.09);
+}
+
+.option-name{
+  font-size:11px;
+  font-weight:800;
+}
+
+.option-price{
+  color:var(--green);
+  font-size:12px;
+  font-weight:900;
+}
+
+.detail-add{
+  width:100%;
+  height:50px;
+  border:0;
+  border-radius:13px;
+  background:var(--green);
+  color:#031108;
+  font-size:14px;
+  font-weight:900;
+  box-shadow:0 0 20px rgba(57,255,106,.25);
+}
+
+/* =========================
    TOAST
-===================================================== */
+========================= */
 
 .toast{
   position:fixed;
-
   z-index:100;
-
   left:50%;
   bottom:100px;
-
   transform:translate(-50%,20px);
-
   background:var(--green);
-
   color:#031108;
-
   padding:11px 18px;
-
   border-radius:30px;
-
   font-size:12px;
   font-weight:900;
-
   opacity:0;
-
   pointer-events:none;
-
   transition:.25s;
+  white-space:nowrap;
 }
 
 .toast.show{
   opacity:1;
-
   transform:translate(-50%,0);
 }
-
-
-/* =====================================================
-   RESPONSIVE
-===================================================== */
 
 @media(max-width:360px){
 
   .grid{
     grid-template-columns:1fr;
-  }
-
-  .logo{
-    max-height:none;
   }
 
 }
@@ -1385,10 +1056,9 @@ main{
 
 <div class="app">
 
-
-<!-- =====================================================
+<!-- =========================
      BOUTIQUE
-===================================================== -->
+========================= -->
 
 <section id="view-shop" class="view active">
 
@@ -1422,71 +1092,42 @@ main{
   placeholder="Rechercher un produit..."
 >
 
-<button
-  id="clearSearch"
-  class="clear-search">
-
+<button id="clearSearch" class="clear-search">
 ×
-
 </button>
 
 </div>
 
-
-<button
-  id="categoryButton"
-  class="category-button">
+<button id="categoryButton" class="category-button">
 
 <span class="left">
-
 <span>☰</span>
-
-<span id="categoryText">
-Toutes les catégories
+<span id="categoryText">Toutes les catégories</span>
 </span>
 
-</span>
-
-<span class="arrow">
-⌄
-</span>
+<span class="arrow">⌄</span>
 
 </button>
 
-
-<div
-  id="categories"
-  class="categories">
-</div>
+<div id="categories" class="categories"></div>
 
 </header>
 
-
 <main>
 
-<div
-  id="sectionTitle"
-  class="section-title">
-
+<div id="sectionTitle" class="section-title">
 Tous les produits
-
 </div>
 
-<div
-  id="products"
-  class="grid">
-</div>
+<div id="products" class="grid"></div>
 
-<div
-  id="empty"
-  class="empty"
-  style="display:none">
+<div id="empty" class="empty" style="display:none">
 
 <div class="empty-icon">
-🔎
+📦
 </div>
 
-Aucun produit trouvé.
+Aucun produit disponible.
 
 </div>
 
@@ -1495,9 +1136,9 @@ Aucun produit trouvé.
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      PANIER
-===================================================== -->
+========================= -->
 
 <section id="view-cart" class="view">
 
@@ -1509,10 +1150,7 @@ Panier
 
 <div id="cartList"></div>
 
-<div
-  id="cartEmpty"
-  class="empty"
-  style="display:none">
+<div id="cartEmpty" class="empty">
 
 <div class="empty-icon">
 🛒
@@ -1522,54 +1160,25 @@ Ton panier est vide.
 
 </div>
 
-
-<div
-  id="summary"
-  class="summary"
-  style="display:none">
+<div id="summary" class="summary" style="display:none">
 
 <div class="summary-row">
-
-<span>
-Sous-total
-</span>
-
-<span id="subtotal">
-0,00 €
-</span>
-
+<span>Sous-total</span>
+<span id="subtotal">0,00 €</span>
 </div>
 
 <div class="summary-row">
-
-<span>
-Livraison
-</span>
-
-<span>
-À définir
-</span>
-
+<span>Livraison</span>
+<span>À définir</span>
 </div>
 
 <div class="summary-row total">
-
-<span>
-Total
-</span>
-
-<span id="total">
-0,00 €
-</span>
-
+<span>Total</span>
+<span id="total">0,00 €</span>
 </div>
 
-<button
-  id="checkoutOpen"
-  class="submit">
-
-Continuer la commande
-
+<button id="checkoutOpen" class="submit">
+Commander
 </button>
 
 </div>
@@ -1579,9 +1188,9 @@ Continuer la commande
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      INFORMATIONS
-===================================================== -->
+========================= -->
 
 <section id="view-info" class="view">
 
@@ -1590,7 +1199,6 @@ Continuer la commande
 <div class="page-title">
 Informations
 </div>
-
 
 <div class="info-card">
 
@@ -1605,22 +1213,6 @@ nos informations pratiques et tous nos réseaux sociaux.
 
 </div>
 
-
-<div class="info-card">
-
-<h3>
-Horaires
-</h3>
-
-<p>
-Service client : selon les horaires indiqués par la boutique.
-<br><br>
-Pour toute question, utilise l'un des réseaux ci-dessous.
-</p>
-
-</div>
-
-
 <div class="info-card">
 
 <h3>
@@ -1628,13 +1220,11 @@ Meet-up / Livraison
 </h3>
 
 <p>
-Les modalités disponibles sont affichées au moment de la commande.
-Les informations saisies dans le formulaire servent uniquement
-au traitement de la commande.
+Choisis ton mode de réception au moment de la commande.
+Une adresse est demandée uniquement pour une livraison.
 </p>
 
 </div>
-
 
 <div class="info-card">
 
@@ -1644,7 +1234,6 @@ Nos réseaux
 
 <div class="socials">
 
-
 <a
   class="social"
   href="https://tutuduanyu.org/brcoff"
@@ -1652,19 +1241,14 @@ Nos réseaux
   rel="noopener">
 
 <span class="social-icon">
-
 <img
   src="https://i.postimg.cc/dVrMH2Pf/IMG-7937.png"
   alt="Potato">
-
 </span>
 
-<span>
-Potato
-</span>
+<span>Potato</span>
 
 </a>
-
 
 <a
   class="social"
@@ -1673,19 +1257,14 @@ Potato
   rel="noopener">
 
 <span class="social-icon">
-
 <img
   src="https://i.postimg.cc/PqVBN2mm/IMG-8963.webp"
   alt="Telegram">
-
 </span>
 
-<span>
-Telegram
-</span>
+<span>Telegram</span>
 
 </a>
-
 
 <a
   class="social"
@@ -1694,39 +1273,14 @@ Telegram
   rel="noopener">
 
 <span class="social-icon">
-
 <img
   src="https://i.postimg.cc/xTGhL0vT/IMG-8964.png"
   alt="Viber">
-
 </span>
 
-<span>
-Viber
-</span>
+<span>Viber</span>
 
 </a>
-
-
-<a
-  class="social"
-  href="https://www.snapchat.com/add/raymondholandai?share_id=g80oMOGJr7g&locale=fr-FR"
-  onclick="return false;">
-
-<span class="social-icon">
-
-<img
-  src="https://i.postimg.cc/R0YDvqBT/IMG-8965.png"
-  alt="Snapchat">
-
-</span>
-
-<span>
-Snapchat
-</span>
-
-</a>
-
 
 </div>
 
@@ -1737,9 +1291,9 @@ Snapchat
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      PROFIL
-===================================================== -->
+========================= -->
 
 <section id="view-profile" class="view">
 
@@ -1751,20 +1305,13 @@ Snapchat
 
 <img
   src="https://i.postimg.cc/bYKLMWPN/CC97392E-546C-4904-A761-F45E6DAA35DF.jpg"
-  alt="Profil"
->
+  alt="Profil">
 
 </div>
 
-
-<div
-  id="profileName"
-  class="profile-name">
-
+<div id="profileName" class="profile-name">
 Client
-
 </div>
-
 
 <div class="profile-sub">
 Telegram WebApp
@@ -1772,55 +1319,31 @@ Telegram WebApp
 
 </div>
 
-
 <div class="profile-row">
 
-<span>
-👤 Nom Telegram
-</span>
-
-<span id="profileUsername">
-—
-</span>
+<span>👤 Nom Telegram</span>
+<span id="profileUsername">—</span>
 
 </div>
 
-
 <div class="profile-row">
 
-<span>
-🆔 Identifiant
-</span>
-
-<span id="profileId">
-—
-</span>
+<span>🆔 Identifiant</span>
+<span id="profileId">—</span>
 
 </div>
 
-
 <div class="profile-row">
 
-<span>
-🛒 Articles dans le panier
-</span>
-
-<span id="profileCartCount">
-0
-</span>
+<span>🛒 Articles</span>
+<span id="profileCartCount">0</span>
 
 </div>
 
-
 <div class="profile-row">
 
-<span>
-💚 Statut
-</span>
-
-<span>
-Actif
-</span>
+<span>💚 Statut</span>
+<span>Actif</span>
 
 </div>
 
@@ -1829,9 +1352,9 @@ Actif
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      DEVELOPER
-===================================================== -->
+========================= -->
 
 <div class="developer-wrap">
 
@@ -1841,20 +1364,14 @@ Actif
   target="_blank"
   rel="noopener">
 
-<span>
-DÉVELOPPER PAR
-</span>
+<span>DÉVELOPPER PAR</span>
 
 <span class="developer-blue">
 @LeDesigner
 </span>
 
-<span
-  class="verified-blue"
-  aria-label="Compte certifié">
-
+<span class="verified-blue">
 ✓
-
 </span>
 
 </a>
@@ -1862,16 +1379,13 @@ DÉVELOPPER PAR
 </div>
 
 
-<!-- =====================================================
+<!-- =========================
      NAVIGATION
-===================================================== -->
+========================= -->
 
 <nav class="bottom-nav">
 
-
-<button
-  class="nav-btn active"
-  data-view="shop">
+<button class="nav-btn active" data-view="shop">
 
 <svg
   viewBox="0 0 24 24"
@@ -1888,10 +1402,7 @@ Boutique
 
 </button>
 
-
-<button
-  class="nav-btn"
-  data-view="cart">
+<button class="nav-btn" data-view="cart">
 
 <svg
   viewBox="0 0 24 24"
@@ -1908,20 +1419,13 @@ Boutique
 
 Panier
 
-<span
-  id="cartBadge"
-  class="badge">
-
+<span id="cartBadge" class="badge">
 0
-
 </span>
 
 </button>
 
-
-<button
-  class="nav-btn"
-  data-view="info">
+<button class="nav-btn" data-view="info">
 
 <svg
   viewBox="0 0 24 24"
@@ -1930,19 +1434,8 @@ Panier
   stroke-width="2">
 
 <circle cx="12" cy="12" r="9"></circle>
-
-<line
-  x1="12"
-  y1="10"
-  x2="12"
-  y2="16">
-</line>
-
-<circle
-  cx="12"
-  cy="7"
-  r="1">
-</circle>
+<line x1="12" y1="10" x2="12" y2="16"></line>
+<circle cx="12" cy="7" r="1"></circle>
 
 </svg>
 
@@ -1950,10 +1443,7 @@ Infos
 
 </button>
 
-
-<button
-  class="nav-btn"
-  data-view="profile">
+<button class="nav-btn" data-view="profile">
 
 <svg
   viewBox="0 0 24 24"
@@ -1961,15 +1451,8 @@ Infos
   stroke="currentColor"
   stroke-width="2">
 
-<circle
-  cx="12"
-  cy="7"
-  r="4">
-</circle>
-
-<path
-  d="M4 21v-1a8 8 0 0 1 16 0v1">
-</path>
+<circle cx="12" cy="7" r="4"></circle>
+<path d="M4 21v-1a8 8 0 0 1 16 0v1"></path>
 
 </svg>
 
@@ -1982,113 +1465,49 @@ Profil
 </div>
 
 
-<!-- =====================================================
-     PRODUCT SHEET
-===================================================== -->
+<!-- =========================
+     PRODUCT MODAL
+========================= -->
 
-<div
-  id="overlay"
-  class="overlay">
-</div>
+<div id="productOverlay" class="product-overlay"></div>
 
-
-<div
-  id="productSheet"
-  class="sheet">
+<div id="productSheet" class="product-sheet">
 
 <div class="handle"></div>
 
-
-<button
-  id="closeSheet"
-  class="close">
-
+<button id="closeProduct" class="close">
 ×
-
 </button>
 
+<img
+  id="detailImage"
+  class="product-detail-image"
+  src=""
+  alt="Produit"
+>
 
-<div
-  id="sheetImage"
-  class="sheet-image">
+<div class="product-detail-body">
 
-</div>
-
-
-<div class="sheet-body">
-
-<span
-  id="sheetCategory"
-  class="sheet-tag">
-
+<div id="detailBadge" class="detail-badge">
 Catégorie
+</div>
 
-</span>
-
-
-<h2 id="sheetTitle">
+<div id="detailTitle" class="detail-title">
 Produit
-</h2>
-
-
-<p
-  id="sheetDescription"
-  class="sheet-description">
-
-Description.
-
-</p>
-
-
-<div class="section-title">
-Format
 </div>
 
-
-<div
-  id="weights"
-  class="weights">
+<div id="detailDescription" class="detail-description">
+Description
 </div>
 
-
-<div class="sheet-quantity">
-
-<strong>
-Quantité
-</strong>
-
-
-<div class="big-qty">
-
-<button id="minus">
-−
-</button>
-
-<span id="quantity">
-1
-</span>
-
-<button id="plus">
-+
-</button>
-
+<div class="options-title">
+Choisis ton option
 </div>
 
-</div>
+<div id="priceOptions" class="price-options"></div>
 
-
-<button
-  id="addCart"
-  class="add-cart">
-
-<span>
+<button id="detailAdd" class="detail-add">
 Ajouter au panier
-</span>
-
-<strong id="sheetPrice">
-0,00 €
-</strong>
-
 </button>
 
 </div>
@@ -2096,31 +1515,19 @@ Ajouter au panier
 </div>
 
 
-<!-- =====================================================
-     CHECKOUT SHEET
-===================================================== -->
+<!-- =========================
+     CHECKOUT
+========================= -->
 
-<div
-  id="checkoutOverlay"
-  class="overlay">
-</div>
+<div id="checkoutOverlay" class="overlay"></div>
 
-
-<div
-  id="checkoutSheet"
-  class="sheet">
+<div id="checkoutSheet" class="sheet">
 
 <div class="handle"></div>
 
-
-<button
-  id="closeCheckout"
-  class="close">
-
+<button id="closeCheckout" class="close">
 ×
-
 </button>
-
 
 <div class="sheet-body">
 
@@ -2128,154 +1535,57 @@ Ajouter au panier
 Finaliser la commande
 </h2>
 
-
 <p class="sheet-description">
-Remplis les informations nécessaires au traitement de ta commande.
+Choisis ton mode de réception.
 </p>
-
-
-<div class="form">
-
-
-<div class="form-group">
-
-<label>
-Nom complet
-</label>
-
-<input
-  id="customerName"
-  type="text"
-  placeholder="Prénom Nom">
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Téléphone
-</label>
-
-<input
-  id="customerPhone"
-  type="tel"
-  placeholder="+33...">
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Ville
-</label>
-
-<input
-  id="customerCity"
-  type="text"
-  placeholder="Ville">
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Code postal
-</label>
-
-<input
-  id="customerPostal"
-  type="text"
-  placeholder="00000">
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Adresse
-</label>
-
-<textarea
-  id="customerAddress"
-  placeholder="Adresse complète">
-</textarea>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Mode de réception
-</label>
-
 
 <div class="delivery-options">
 
-
-<div
+<button
   class="delivery-option active"
   data-delivery="meetup">
 
 🏢 Meet-up
 
-</div>
+</button>
 
-
-<div
+<button
   class="delivery-option"
   data-delivery="delivery">
 
 🚚 Livraison
 
-</div>
-
-
-</div>
+</button>
 
 </div>
 
-
-<div class="form-group">
+<div id="addressWrap" class="address-wrap">
 
 <label>
-Commentaire
+Adresse de livraison
 </label>
 
 <textarea
-  id="customerNote"
-  placeholder="Information supplémentaire...">
+  id="customerAddress"
+  placeholder="Indique ton adresse complète...">
 </textarea>
 
 </div>
 
+<div id="orderSummary" class="order-summary">
+</div>
 
-<button
-  id="submitOrder"
-  class="submit">
-
-Préparer ma commande
-
+<button id="submitOrder" class="submit">
+Envoyer la commande à @Fenec421
 </button>
 
-
 </div>
 
 </div>
 
-</div>
 
-
-<div
-  id="toast"
-  class="toast">
-
-Action effectuée ✓
-
+<div id="toast" class="toast">
+Ajouté au panier ✓
 </div>
 
 
@@ -2284,7 +1594,6 @@ Action effectuée ✓
 (function(){
 
 "use strict";
-
 
 /* =====================================================
    TELEGRAM
@@ -2296,11 +1605,9 @@ const tg =
     ? window.Telegram.WebApp
     : null;
 
-
 if(tg){
 
   tg.ready();
-
   tg.expand();
 
   if(tg.setHeaderColor){
@@ -2316,100 +1623,136 @@ if(tg){
 
 /* =====================================================
    PRODUITS
+   MODIFIE ICI TES PRODUITS
 ===================================================== */
 
 const PRODUCTS = [
 
-{
-  id:1,
-  name:"FILTRE 90u🇲🇦",
-  category:"FILTRE🇲🇦",
-  emoji:"🍫",
-  image:"https://i.postimg.cc/mkwzyfXh/IMG-8954.jpg",
-  description:"GHOST FARM🏭.",
-  options:[
-    {label:"3.5 g", price:20},
-    {label:"10 g", price:50},
-    {label:"25 g", price:100}
+  {
+    id:"produit-1",
+    name:"FILTRE 90u🇲🇦",
+    category:"FILTRE🍫",
+    description:"GHOST FARM🏭.",
+    image:"https://i.postimg.cc/6Q2y5KjJ/IMG-9035.jpg",
+    options:[
+      {name:"3.5g",price:20},
+      {name:"10g",price:50},
+      {name:"25g",price:100},
+      {name:"50g",price:170},
+      {name:"100g",price:310}
+    ]
+  },
+
+  {
+    id:"produit-2",
+    name:"DOUBLE FROZEN🥶🇲🇦",
+    category:"FROZEN🥶",
+    description:"STRAIN 1 HAVASU ICE CREAM🍰.",
+    image:"https://i.postimg.cc/rwnhv0pB/IMG-8955.jpg",
+    options:[
+      {name:"5g",price:50},
+      {name:"10g",price:90},
+      {name:"50g",price:350}
+    ]
+  },
+
+  {
+    id:"produit-3",
+    name:"CALI USA🇺🇸",
+    category:"BEUH☘️",
+    description:"COOKIE RUNTZ🍪.",
+    image:"https://i.postimg.cc/V6MDrKFY/IMG-8958.jpg",
+    options:[
+      {name:"5g",price:60},
+      {name:"10g",price:110}
+    ]
+  },
+
+  {
+    id:"produit-4",
+    name:"COCAINE 0.96🇨🇴",
+    category:"ZIP❄️",
+    description:"PROVENANCE: 🇨🇴.",
+    image:"https://i.postimg.cc/sD3wx9QN/IMG-8959.jpg",
+    options:[
+      {name:"1g",price:60},
+      {name:"2g",price:100},
+      {name:"10g",price:320}
+    ]
+  },
+
+  {
+    id:"produit-5",
+    name:"JAUNE MOUSSEUX🧽",
+    category:"JAUNE🧽",
+    description:"JUST DO IT⚡️.",
+    image:"https://i.postimg.cc/PqkBNzKY/IMG-9029.jpg",
+    options:[
+      {name:"5g",price:20},
+      {name:"10g",price:30},
+      {name:"25g",price:70},
+      {name:"50g",price:120},
+      {name:"100g",price:220}
+    ]
+  },
+  
+  {
+  id: "produit-6",
+  name: "MOUSSE PREMIUM🧽",
+  category: "JAUNE🧽",
+  description: "MASTERKUSH🧽⭐️.",
+  image: "https://i.postimg.cc/65zzv2C4/IMG-8961.jpg",
+  options: [
+    { name: "5g", price: 20 },
+    { name: "10g", price: 30 },
+    { name: "25g", price: 70 },
+    { name: "50g", price: 120 },
+    { name: "100g", price: 220 },
+    { name: "500g", price: 1000 }
   ]
-},
-
-{
-  id:2,
-  name:"DOUBLE FROZEN🥶🇲🇦",
-  category:"FROZEN🥶",
-  emoji:"🍫",
-  image:"https://i.postimg.cc/fypc9hJ0/IMG-8955.jpg",
-  description:"Havasu ice cream🍰⚡️.",
-  options:[
-    {label:"5 g", price:50},
-    {label:"10 g", price:90},
-    {label:"50 g", price:350}
+  },
+  
+  {
+  id: "produit-7",
+  name: "THE SAMOURAÏ🇺🇸",
+  category: "STATIC⚡️",
+  description: "️STATIC/SIFT/CALIFORNIE STRAIN: PURPLE CREAM🍇🍨🍧.",
+  image: "https://i.postimg.cc/tCZf5mM1/IMG-9026.jpg",
+  options: [
+    { name: "1g", price: 30 },
+    { name: "2g", price: 60 },
+    { name: "5g", price: 150 },
+    { name: "10g", price: 280 }
   ]
-},
-
-{
-  id:3,
-  name:"CALI USA🇺🇸",
-  category:"BEUH☘️",
-  emoji:"🎁",
-  image:"https://i.postimg.cc/RVtfDyWX/IMG-8958.jpg",
-  description:"COOKIE RUNTZ🍪.",
-  options:[
-    {label:"5 g", price:60},
-    {label:"10 g", price:110}
+  },
+  
+  {
+  id: "produit-8",
+  name: "PLASMASTATIC⛽️",
+  category: "STATIC⚡️",
+  description: "MEILLEUR VARIÉTÉ EN PLASMASTATIC✅⚡️.",
+  image: "https://i.postimg.cc/7YjLsdPp/55D1ED9C-68E4-49AC-8B8B-41B82D621E1B.jpg",
+  options: [
+    { name: "5g", price: 80 },
+    { name: "10g", price: 150 },
+    { name: "25g", price: 350 },
+    { name: "50g", price: 600 },
+    { name: "100g", price: 1000 }
   ]
-},
+  }
 
-{
-  id:4,
-  name:"COCAINE 0,96%🇨🇴",
-  category:"ZIP❄️",
-  emoji:"🍬",
-  image:"https://i.postimg.cc/q7Jmsyk2/IMG-8959.jpg",
-  description:"Provient Tout Droit de Colombie Qualité Glaciale.",
-  options:[
-    {label:"1 g", price:60},
-    {label:"2 g", price:100},
-    {label:"10 g", price:320}
-  ]
-},
+  ];
 
-{
-  id:5,
-  name:"MOUSSE PREMIUM🧽",
-  category:"MOUSSE🧽",
-  emoji:"🍪",
-  image:"https://i.postimg.cc/qvkcSr9v/IMG-8961.jpg",
-  description:"S'effrite sans difficultés.",
-  options:[
-    {label:"5 g", price:20},
-    {label:"10 g", price:30},
-    {label:"25 g", price:70}
-  ]
-},
 
-{
-  id:6,
-  name:"NOUVEAU PRODUIT",
-  category:"🆕",
-  emoji:"🥤",
-  image:"https://placehold.co/600x600/101810/39ff6a?text=PHOTO+PRODUIT+6",
-  description:"Tres bientot.",
-  options:[
-    {label:"0 g", price:0.00},
-    {label:"0 g", price:0.00}
-  ]
-}
-
-];
-
+/* =====================================================
+   CATEGORIES
+===================================================== */
 
 const CATEGORIES = [
   "Tous",
   ...new Set(
     PRODUCTS.map(
-      p => p.category
+      product=>product.category
     )
   )
 ];
@@ -2420,13 +1763,19 @@ const CATEGORIES = [
 ===================================================== */
 
 const state = {
+
   category:"Tous",
+
   search:"",
+
   cart:{},
-  product:null,
-  option:0,
-  quantity:1,
-  delivery:"meetup"
+
+  delivery:"meetup",
+
+  selectedProduct:null,
+
+  selectedOption:0
+
 };
 
 
@@ -2435,6 +1784,7 @@ const state = {
 ===================================================== */
 
 function euro(value){
+
   return Number(value).toLocaleString(
     "fr-FR",
     {
@@ -2442,10 +1792,12 @@ function euro(value){
       maximumFractionDigits:2
     }
   )+" €";
+
 }
 
 
 function cartCount(){
+
   return Object.values(
     state.cart
   ).reduce(
@@ -2453,10 +1805,12 @@ function cartCount(){
       total+item.quantity,
     0
   );
+
 }
 
 
 function cartTotal(){
+
   return Object.values(
     state.cart
   ).reduce(
@@ -2466,22 +1820,33 @@ function cartTotal(){
       item.quantity,
     0
   );
+
 }
 
 
 function toast(message){
-  const el=
-    document.getElementById("toast");
 
-  el.textContent=message;
-  el.classList.add("show");
+  const el =
+    document.getElementById(
+      "toast"
+    );
+
+  el.textContent =
+    message;
+
+  el.classList.add(
+    "show"
+  );
 
   setTimeout(
     ()=>{
-      el.classList.remove("show");
+      el.classList.remove(
+        "show"
+      );
     },
     1800
   );
+
 }
 
 
@@ -2489,21 +1854,22 @@ function toast(message){
    CATEGORIES
 ===================================================== */
 
-const categoriesEl=
+const categoriesEl =
   document.getElementById(
     "categories"
   );
 
+categoriesEl.innerHTML = "";
 
 CATEGORIES.forEach(
   category=>{
 
-    const button=
+    const button =
       document.createElement(
         "button"
       );
 
-    button.className=
+    button.className =
       "category"+
       (
         category==="Tous"
@@ -2511,15 +1877,13 @@ CATEGORIES.forEach(
           :""
       );
 
-    button.textContent=
+    button.textContent =
       category;
 
+    button.onclick = ()=>{
 
-    button.onclick=()=>{
-
-      state.category=
+      state.category =
         category;
-
 
       document
         .querySelectorAll(
@@ -2532,36 +1896,22 @@ CATEGORIES.forEach(
             )
         );
 
-
       button.classList.add(
         "active"
       );
-
 
       document
         .getElementById(
           "categoryText"
         )
-        .textContent=
+        .textContent =
           category==="Tous"
             ?"Toutes les catégories"
             :category;
 
-
-      document
-        .getElementById(
-          "sectionTitle"
-        )
-        .textContent=
-          category==="Tous"
-            ?"Tous les produits"
-            :category;
-
-
       categoriesEl
         .classList
         .remove("open");
-
 
       document
         .getElementById(
@@ -2570,11 +1920,9 @@ CATEGORIES.forEach(
         .classList
         .remove("open");
 
-
       renderProducts();
 
     };
-
 
     categoriesEl.appendChild(
       button
@@ -2588,12 +1936,11 @@ document
   .getElementById(
     "categoryButton"
   )
-  .onclick=()=>{
+  .onclick = ()=>{
 
     categoriesEl
       .classList
       .toggle("open");
-
 
     document
       .getElementById(
@@ -2609,7 +1956,7 @@ document
    SEARCH
 ===================================================== */
 
-const search=
+const search =
   document.getElementById(
     "search"
   );
@@ -2619,21 +1966,19 @@ search.addEventListener(
   "input",
   ()=>{
 
-    state.search=
+    state.search =
       search.value
         .trim()
         .toLowerCase();
-
 
     document
       .getElementById(
         "clearSearch"
       )
-      .style.display=
+      .style.display =
         state.search
           ?"flex"
           :"none";
-
 
     renderProducts();
 
@@ -2645,16 +1990,18 @@ document
   .getElementById(
     "clearSearch"
   )
-  .onclick=()=>{
+  .onclick = ()=>{
 
-    search.value="";
-    state.search="";
+    search.value = "";
+
+    state.search = "";
 
     document
       .getElementById(
         "clearSearch"
       )
-      .style.display="none";
+      .style.display =
+        "none";
 
     renderProducts();
 
@@ -2667,23 +2014,23 @@ document
 
 function renderProducts(){
 
-  const container=
+  const container =
     document.getElementById(
       "products"
     );
 
-  container.innerHTML="";
+  container.innerHTML = "";
 
-  const filtered=
+  const filtered =
     PRODUCTS.filter(
       product=>{
 
-        const categoryMatch=
+        const categoryMatch =
           state.category==="Tous" ||
           product.category===
             state.category;
 
-        const text=
+        const text =
           (
             product.name+
             " "+
@@ -2692,7 +2039,7 @@ function renderProducts(){
             product.description
           ).toLowerCase();
 
-        const searchMatch=
+        const searchMatch =
           !state.search ||
           text.includes(
             state.search
@@ -2711,7 +2058,7 @@ function renderProducts(){
     .getElementById(
       "empty"
     )
-    .style.display=
+    .style.display =
       filtered.length
         ?"none"
         :"block";
@@ -2720,60 +2067,91 @@ function renderProducts(){
   filtered.forEach(
     product=>{
 
-      const card=
+      const card =
         document.createElement(
           "div"
         );
 
-      card.className=
-        "product";
+      card.className =
+        "product-card";
 
-      const minPrice=
-        Math.min(
-          ...product.options.map(
-            option=>
-              option.price
-          )
-        );
+      const firstPrice =
+        product.options[0].price;
 
-      card.innerHTML=`
-        <div class="product-image">
-          <span class="product-tag">
-            ${product.category}
-          </span>
+
+      card.innerHTML = `
+
+        <div class="product-image-wrap">
+
           <img
+            class="product-image"
             src="${product.image}"
             alt="${product.name}"
             loading="lazy"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
           >
-          <span
-            class="product-image-fallback"
-            style="display:none">
-            ${product.emoji}
-          </span>
+
+          <div class="product-badge">
+            ${product.category}
+          </div>
+
         </div>
-        <h3>
-          ${product.name}
-        </h3>
-        <div class="product-description">
-          ${product.description}
+
+        <div class="product-content">
+
+          <div class="product-name">
+            ${product.name}
+          </div>
+
+          <div class="product-description">
+            ${product.description}
+          </div>
+
+          <div class="product-bottom">
+
+            <div class="product-price">
+              À partir de ${euro(firstPrice)}
+            </div>
+
+            <button
+              class="add-button"
+              aria-label="Ajouter ${product.name}">
+              +
+            </button>
+
+          </div>
+
         </div>
-        <div class="product-bottom">
-          <span class="price">
-            Dès ${euro(minPrice)}
-          </span>
-          <button class="add">
-            +
-          </button>
-        </div>
+
       `;
 
-      card.onclick=()=>{
-        openProduct(product);
-      };
 
-      container.appendChild(card);
+      card.onclick =
+        (event)=>{
+
+          if(
+            event.target.closest(
+              ".add-button"
+            )
+          ){
+
+            addProductDirectly(
+              product
+            );
+
+            return;
+
+          }
+
+          openProduct(
+            product
+          );
+
+        };
+
+
+      container.appendChild(
+        card
+      );
 
     }
   );
@@ -2782,286 +2160,268 @@ function renderProducts(){
 
 
 /* =====================================================
-   PRODUCT SHEET
+   AJOUT DIRECT AVEC +
 ===================================================== */
 
-function openProduct(product){
+function addProductDirectly(product){
 
-  state.product=product;
-  state.option=0;
-  state.quantity=1;
+  const option =
+    product.options[0];
 
-  const sheetImage=
-    document.getElementById(
-      "sheetImage"
-    );
-
-  sheetImage.innerHTML=`
-    <img
-      src="${product.image}"
-      alt="${product.name}"
-      onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
-    >
-    <span style="display:none;font-size:75px">
-      ${product.emoji}
-    </span>
-  `;
-
-  document
-    .getElementById(
-      "sheetCategory"
-    )
-    .textContent=
-      product.category;
-
-  document
-    .getElementById(
-      "sheetTitle"
-    )
-    .textContent=
-      product.name;
-
-  document
-    .getElementById(
-      "sheetDescription"
-    )
-    .textContent=
-      product.description;
-
-  document
-    .getElementById(
-      "quantity"
-    )
-    .textContent=
-      "1";
-
-  const weights=
-    document.getElementById(
-      "weights"
-    );
-
-  weights.innerHTML="";
-
-  product.options.forEach(
-    (option,index)=>{
-
-      const button=
-        document.createElement(
-          "button"
-        );
-
-      button.className=
-        "weight"+
-        (
-          index===0
-            ?" active"
-            :""
-        );
-
-      button.innerHTML=`
-        <strong>
-          ${option.label}
-        </strong>
-        <br>
-        <small>
-          ${euro(option.price)}
-        </small>
-      `;
-
-      button.onclick=()=>{
-        state.option=index;
-
-        document
-          .querySelectorAll(
-            ".weight"
-          )
-          .forEach(
-            x=>
-              x.classList.remove(
-                "active"
-              )
-          );
-
-        button.classList.add(
-          "active"
-        );
-
-        updateSheetPrice();
-      };
-
-      weights.appendChild(button);
-
-    }
+  addToCart(
+    product,
+    option
   );
-
-  updateSheetPrice();
-
-  document
-    .getElementById(
-      "overlay"
-    )
-    .classList.add("open");
-
-  document
-    .getElementById(
-      "productSheet"
-    )
-    .classList.add("open");
 
 }
 
 
-function updateSheetPrice(){
+/* =====================================================
+   PRODUCT MODAL
+===================================================== */
 
-  if(!state.product)
-    return;
+const productOverlay =
+  document.getElementById(
+    "productOverlay"
+  );
 
-  const option=
-    state.product.options[
-      state.option
-    ];
+const productSheet =
+  document.getElementById(
+    "productSheet"
+  );
+
+
+function openProduct(product){
+
+  state.selectedProduct =
+    product;
+
+  state.selectedOption =
+    0;
+
 
   document
     .getElementById(
-      "sheetPrice"
+      "detailImage"
     )
-    .textContent=
-      euro(
-        option.price*
-        state.quantity
+    .src =
+      product.image;
+
+
+  document
+    .getElementById(
+      "detailTitle"
+    )
+    .textContent =
+      product.name;
+
+
+  document
+    .getElementById(
+      "detailBadge"
+    )
+    .textContent =
+      product.category;
+
+
+  document
+    .getElementById(
+      "detailDescription"
+    )
+    .textContent =
+      product.description;
+
+
+  renderPriceOptions();
+
+
+  productOverlay
+    .classList
+    .add("open");
+
+  productSheet
+    .classList
+    .add("open");
+
+}
+
+
+function renderPriceOptions(){
+
+  const product =
+    state.selectedProduct;
+
+  const container =
+    document.getElementById(
+      "priceOptions"
+    );
+
+  container.innerHTML = "";
+
+
+  product.options.forEach(
+    (option,index)=>{
+
+      const button =
+        document.createElement(
+          "button"
+        );
+
+      button.className =
+        "price-option"+
+        (
+          index===
+          state.selectedOption
+            ?" active"
+            :""
+        );
+
+
+      button.innerHTML = `
+
+        <span class="option-name">
+          ${option.name}
+        </span>
+
+        <span class="option-price">
+          ${euro(option.price)}
+        </span>
+
+      `;
+
+
+      button.onclick = ()=>{
+
+        state.selectedOption =
+          index;
+
+        renderPriceOptions();
+
+      };
+
+
+      container.appendChild(
+        button
       );
+
+    }
+  );
 
 }
 
 
 function closeProduct(){
 
-  document
-    .getElementById(
-      "overlay"
-    )
-    .classList.remove(
-      "open"
-    );
+  productOverlay
+    .classList
+    .remove("open");
 
-  document
-    .getElementById(
-      "productSheet"
-    )
-    .classList.remove(
-      "open"
-    );
+  productSheet
+    .classList
+    .remove("open");
 
 }
 
 
 document
   .getElementById(
-    "closeSheet"
+    "closeProduct"
   )
-  .onclick=
+  .onclick =
     closeProduct;
 
-
-document
-  .getElementById(
-    "overlay"
-  )
-  .onclick=()=>{
-    closeProduct();
-    closeCheckout();
-  };
-
-
-document
-  .getElementById(
-    "minus"
-  )
-  .onclick=()=>{
-
-    if(
-      state.quantity>1
-    ){
-      state.quantity--;
-
-      document
-        .getElementById(
-          "quantity"
-        )
-        .textContent=
-          state.quantity;
-
-      updateSheetPrice();
-    }
-
-  };
-
-
-document
-  .getElementById(
-    "plus"
-  )
-  .onclick=()=>{
-
-    state.quantity++;
-
-    document
-      .getElementById(
-        "quantity"
-      )
-      .textContent=
-        state.quantity;
-
-    updateSheetPrice();
-
-  };
+productOverlay.onclick =
+  closeProduct;
 
 
 /* =====================================================
-   ADD CART
+   AJOUT PANIER
 ===================================================== */
+
+function addToCart(
+  product,
+  option
+){
+
+  const key =
+    product.id+
+    "::"+
+    option.name;
+
+
+  if(
+    state.cart[key]
+  ){
+
+    state.cart[key].quantity++;
+
+  }else{
+
+    state.cart[key] = {
+
+      key:key,
+
+      productId:
+        product.id,
+
+      name:
+        product.name,
+
+      category:
+        product.category,
+
+      option:
+        option.name,
+
+      price:
+        option.price,
+
+      image:
+        product.image,
+
+      quantity:1
+
+    };
+
+  }
+
+
+  updateCart();
+
+  toast(
+    `${product.name} ajouté au panier ✓`
+  );
+
+}
+
 
 document
   .getElementById(
-    "addCart"
+    "detailAdd"
   )
-  .onclick=()=>{
+  .onclick = ()=>{
 
-    const product=
-      state.product;
+    const product =
+      state.selectedProduct;
 
-    const option=
-      product.options[
-        state.option
-      ];
-
-    const key=
-      product.id+
-      "-"+
-      state.option;
-
-    if(
-      state.cart[key]
-    ){
-      state.cart[key]
-        .quantity+=
-          state.quantity;
-    }else{
-      state.cart[key]={
-        productId:product.id,
-        name:product.name,
-        category:product.category,
-        emoji:product.emoji,
-        image:product.image,
-        option:option.label,
-        price:option.price,
-        quantity:state.quantity
-      };
+    if(!product){
+      return;
     }
 
-    updateCart();
+
+    const option =
+      product.options[
+        state.selectedOption
+      ];
+
+
+    addToCart(
+      product,
+      option
+    );
+
+
     closeProduct();
-    toast("Ajouté au panier ✓");
 
   };
 
@@ -3072,148 +2432,204 @@ document
 
 function updateCart(){
 
-  const list=
+  const list =
     document.getElementById(
       "cartList"
     );
 
-  list.innerHTML="";
+  list.innerHTML = "";
 
-  const items=
+  const items =
     Object.entries(
       state.cart
     );
 
-  const empty=
+  const empty =
     document.getElementById(
       "cartEmpty"
     );
 
-  const summary=
+  const summary =
     document.getElementById(
       "summary"
     );
 
-  if(
-    items.length===0
-  ){
-    empty.style.display="block";
-    summary.style.display="none";
+
+  if(items.length===0){
+
+    empty.style.display =
+      "block";
+
+    summary.style.display =
+      "none";
+
   }else{
-    empty.style.display="none";
-    summary.style.display="block";
+
+    empty.style.display =
+      "none";
+
+    summary.style.display =
+      "block";
+
   }
+
 
   items.forEach(
     ([key,item])=>{
 
-      const row=
+      const row =
         document.createElement(
           "div"
         );
 
-      row.className="cart-item";
+      row.className =
+        "cart-item";
 
-      row.innerHTML=`
+
+      row.innerHTML = `
+
         <div class="cart-thumb">
+
           <img
             src="${item.image}"
             alt="${item.name}"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
           >
-          <span style="display:none">
-            ${item.emoji}
-          </span>
+
         </div>
+
         <div class="cart-info">
+
           <h4>
             ${item.name}
           </h4>
+
           <div class="cart-meta">
-            ${item.option} · ${item.category}
+            ${item.option}
           </div>
+
         </div>
+
         <div class="cart-right">
+
           <div class="cart-price">
             ${euro(
               item.price*
               item.quantity
             )}
           </div>
+
           <div class="qty">
-            <button data-minus>−</button>
-            <span>${item.quantity}</span>
-            <button data-plus>+</button>
+
+            <button data-minus>
+              −
+            </button>
+
+            <span>
+              ${item.quantity}
+            </span>
+
+            <button data-plus>
+              +
+            </button>
+
           </div>
+
         </div>
+
       `;
+
 
       row
         .querySelector(
           "[data-minus]"
         )
-        .onclick=()=>{
+        .onclick = ()=>{
+
           item.quantity--;
-          if(item.quantity<=0){
+
+          if(
+            item.quantity<=0
+          ){
+
             delete state.cart[key];
+
           }
+
           updateCart();
+
         };
+
 
       row
         .querySelector(
           "[data-plus]"
         )
-        .onclick=()=>{
+        .onclick = ()=>{
+
           item.quantity++;
+
           updateCart();
+
         };
 
-      list.appendChild(row);
+
+      list.appendChild(
+        row
+      );
 
     }
   );
 
 
-  const total=
+  const total =
     cartTotal();
+
 
   document
     .getElementById(
       "subtotal"
     )
-    .textContent=
+    .textContent =
       euro(total);
+
 
   document
     .getElementById(
       "total"
     )
-    .textContent=
+    .textContent =
       euro(total);
 
-  const count=
+
+  const count =
     cartCount();
 
-  const badge=
+
+  const badge =
     document.getElementById(
       "cartBadge"
     );
 
-  badge.textContent=
+
+  badge.textContent =
     count;
 
-  badge.style.display=
+
+  badge.style.display =
     count>0
       ?"flex"
       :"none";
+
 
   document
     .getElementById(
       "profileCartCount"
     )
-    .textContent=
+    .textContent =
       count;
+
+
+  updateOrderSummary();
 
 }
 
@@ -3222,65 +2638,73 @@ function updateCart(){
    CHECKOUT
 ===================================================== */
 
+const checkoutOverlay =
+  document.getElementById(
+    "checkoutOverlay"
+  );
+
+const checkoutSheet =
+  document.getElementById(
+    "checkoutSheet"
+  );
+
+
 document
   .getElementById(
     "checkoutOpen"
   )
-  .onclick=()=>{
+  .onclick = ()=>{
 
     if(
       cartCount()===0
     ){
-      toast("Ton panier est vide");
+
+      toast(
+        "Ton panier est vide"
+      );
+
       return;
+
     }
 
-    document
-      .getElementById(
-        "checkoutOverlay"
-      )
-      .classList.add(
-        "open"
-      );
 
-    document
-      .getElementById(
-        "checkoutSheet"
-      )
-      .classList.add(
-        "open"
-      );
+    updateOrderSummary();
+
+
+    checkoutOverlay
+      .classList
+      .add("open");
+
+
+    checkoutSheet
+      .classList
+      .add("open");
 
   };
+
+
+function closeCheckout(){
+
+  checkoutOverlay
+    .classList
+    .remove("open");
+
+  checkoutSheet
+    .classList
+    .remove("open");
+
+}
 
 
 document
   .getElementById(
     "closeCheckout"
   )
-  .onclick=
+  .onclick =
     closeCheckout;
 
-
-function closeCheckout(){
-
-  document
-    .getElementById(
-      "checkoutOverlay"
-    )
-    .classList.remove(
-      "open"
-    );
-
-  document
-    .getElementById(
-      "checkoutSheet"
-    )
-    .classList.remove(
-      "open"
-    );
-
-}
+checkoutOverlay.onclick =
+  closeCheckout;
 
 
 /* =====================================================
@@ -3294,7 +2718,7 @@ document
   .forEach(
     option=>{
 
-      option.onclick=()=>{
+      option.onclick = ()=>{
 
         document
           .querySelectorAll(
@@ -3307,12 +2731,28 @@ document
               )
           );
 
+
         option.classList.add(
           "active"
         );
 
-        state.delivery=
+
+        state.delivery =
           option.dataset.delivery;
+
+
+        document
+          .getElementById(
+            "addressWrap"
+          )
+          .classList.toggle(
+            "visible",
+            state.delivery===
+              "delivery"
+          );
+
+
+        updateOrderSummary();
 
       };
 
@@ -3321,48 +2761,210 @@ document
 
 
 /* =====================================================
-   TELEGRAM ORDER
+   ORDER SUMMARY
 ===================================================== */
 
-document
-  .getElementById(
-    "submitOrder"
-  )
-  .onclick=()=>{
+function updateOrderSummary(){
 
-    const name=
-      document
-        .getElementById(
-          "customerName"
-        )
-        .value
-        .trim();
+  const summary =
+    document.getElementById(
+      "orderSummary"
+    );
 
-    const phone=
-      document
-        .getElementById(
-          "customerPhone"
-        )
-        .value
-        .trim();
 
-    const city=
-      document
-        .getElementById(
-          "customerCity"
-        )
-        .value
-        .trim();
+  const items =
+    Object.values(
+      state.cart
+    );
 
-    const postal=
-      document
-        .getElementById(
-          "customerPostal"
-        )
-        .value
-        .trim();
 
-    const address=
+  if(!items.length){
+
+    summary.innerHTML =
+      "Panier vide.";
+
+    return;
+
+  }
+
+
+  let html =
+    "<strong>Récapitulatif</strong><br><br>";
+
+
+  items.forEach(
+    item=>{
+
+      html +=
+        `${item.quantity} × `+
+        `${item.name}`+
+        ` — ${item.option}`+
+        ` — ${euro(
+          item.price*
+          item.quantity
+        )}<br>`;
+
+    }
+  );
+
+
+  html +=
+    `<br><strong>Total : `+
+    `${euro(
+      cartTotal()
+    )}</strong>`;
+
+
+  html +=
+    `<br>Réception : `+
+    (
+      state.delivery===
+      "delivery"
+        ?"🚚 Livraison"
+        :"🏢 Meet-up"
+    );
+
+
+  summary.innerHTML =
+    html;
+
+}
+
+
+/* =====================================================
+   TELEGRAM USER
+===================================================== */
+
+function getTelegramUser(){
+
+  if(
+    !tg ||
+    !tg.initDataUnsafe
+  ){
+
+    return null;
+
+  }
+
+
+  return tg.initDataUnsafe.user ||
+    null;
+
+}
+
+
+function getClientName(){
+
+  const user =
+    getTelegramUser();
+
+
+  if(!user){
+    return "Client";
+  }
+
+
+  const fullName =
+    [
+      user.first_name,
+      user.last_name
+    ]
+    .filter(Boolean)
+    .join(" ");
+
+
+  return fullName ||
+    user.username ||
+    "Client";
+
+}
+
+
+/* =====================================================
+   CREATION DU MESSAGE
+===================================================== */
+
+function buildOrderMessage(){
+
+  const user =
+    getTelegramUser();
+
+
+  const items =
+    Object.values(
+      state.cart
+    );
+
+
+  let message =
+`🛒 NOUVELLE COMMANDE
+
+👤 Client : ${getClientName()}`;
+
+
+  if(
+    user &&
+    user.username
+  ){
+
+    message +=
+      `\n📱 Telegram : @${user.username}`;
+
+  }
+
+
+  if(
+    user &&
+    user.id
+  ){
+
+    message +=
+      `\n🆔 ID : ${user.id}`;
+
+  }
+
+
+  message +=
+    `\n\n📦 ARTICLES\n`;
+
+
+  items.forEach(
+    item=>{
+
+      message +=
+        `• ${item.quantity} × ${item.name}\n`+
+        `  Option : ${item.option}\n`+
+        `  Prix : ${euro(
+          item.price*
+          item.quantity
+        )}\n\n`;
+
+    }
+  );
+
+
+  message +=
+    `💰 TOTAL : ${euro(
+      cartTotal()
+    )}`;
+
+
+  message +=
+    `\n\n📍 RÉCEPTION : `+
+    (
+      state.delivery===
+      "delivery"
+        ?"Livraison"
+        :"Meet-up"
+    );
+
+
+  if(
+    state.delivery===
+    "delivery"
+  ){
+
+    const address =
       document
         .getElementById(
           "customerAddress"
@@ -3370,74 +2972,126 @@ document
         .value
         .trim();
 
-    const note=
-      document
-        .getElementById(
-          "customerNote"
-        )
-        .value
-        .trim();
 
-    if(!name){
-      toast("Indique ton nom");
-      return;
-    }
+    message +=
+      `\n🏠 Adresse : ${address}`;
 
-    if(!phone){
-      toast("Indique ton téléphone");
-      return;
-    }
+  }
 
-    if(!city){
-      toast("Indique ta ville");
-      return;
-    }
 
-    if(!postal){
-      toast("Indique ton code postal");
-      return;
-    }
+  message +=
+    `\n\n🤖 Boutique BR-COF-42`;
 
-    if(!address){
-      toast("Indique ton adresse");
-      return;
-    }
 
-    const order={
-      type:"legal_store_order",
-      createdAt:new Date().toISOString(),
-      customer:{
-        name:name,
-        phone:phone,
-        city:city,
-        postalCode:postal,
-        address:address,
-        note:note
-      },
-      reception:state.delivery,
-      items:Object.values(state.cart),
-      total:cartTotal()
-    };
+  return message;
+
+}
+
+
+/* =====================================================
+   COMMANDER
+===================================================== */
+
+document
+  .getElementById(
+    "submitOrder"
+  )
+  .onclick = ()=>{
 
     if(
-      tg &&
-      typeof tg.sendData === "function"
+      cartCount()===0
     ){
-      tg.sendData(
-        JSON.stringify(
-          order
-        )
+
+      toast(
+        "Ton panier est vide"
       );
 
-      toast("Commande transmise à Telegram ✓");
-    }else{
-      console.log(
-        "Commande :",
-        order
-      );
+      return;
 
-      toast("Commande préparée ✓");
     }
+
+
+    if(
+      state.delivery===
+      "delivery"
+    ){
+
+      const address =
+        document
+          .getElementById(
+            "customerAddress"
+          )
+          .value
+          .trim();
+
+
+      if(!address){
+
+        toast(
+          "Indique ton adresse"
+        );
+
+        return;
+
+      }
+
+    }
+
+
+    const message =
+      buildOrderMessage();
+
+
+    /*
+      IMPORTANT :
+      Le navigateur ne peut pas envoyer
+      silencieusement un message Telegram.
+      
+      On ouvre donc la conversation
+      avec @Fenec421 avec le texte
+      préparé.
+    */
+
+    const telegramUrl =
+      "https://t.me/Fenec421?text="+
+      encodeURIComponent(
+        message
+      );
+
+
+    closeCheckout();
+
+
+    if(tg){
+
+      try{
+
+        tg.openTelegramLink(
+          telegramUrl
+        );
+
+      }catch(error){
+
+        window.open(
+          telegramUrl,
+          "_blank"
+        );
+
+      }
+
+    }else{
+
+      window.open(
+        telegramUrl,
+        "_blank"
+      );
+
+    }
+
+
+    toast(
+      "Commande préparée ✓"
+    );
 
   };
 
@@ -3453,10 +3107,11 @@ document
   .forEach(
     button=>{
 
-      button.onclick=()=>{
+      button.onclick = ()=>{
 
-        const target=
+        const target =
           button.dataset.view;
+
 
         document
           .querySelectorAll(
@@ -3469,9 +3124,11 @@ document
               )
           );
 
+
         button.classList.add(
           "active"
         );
+
 
         document
           .querySelectorAll(
@@ -3484,6 +3141,7 @@ document
               )
           );
 
+
         document
           .getElementById(
             "view-"+target
@@ -3492,12 +3150,11 @@ document
             "active"
           );
 
-        window.scrollTo(
-          {
-            top:0,
-            behavior:"instant"
-          }
-        );
+
+        window.scrollTo({
+          top:0,
+          behavior:"instant"
+        });
 
       };
 
@@ -3506,51 +3163,50 @@ document
 
 
 /* =====================================================
-   TELEGRAM USER
+   INITIALISATION
 ===================================================== */
 
-if(tg){
+const user =
+  getTelegramUser();
 
-  const user=
-    tg.initDataUnsafe &&
-    tg.initDataUnsafe.user;
 
-  if(user){
+if(user){
 
-    document
-      .getElementById(
-        "profileName"
-      )
-      .textContent=
-        user.first_name ||
-        "Client";
+  document
+    .getElementById(
+      "profileName"
+    )
+    .textContent =
+      [
+        user.first_name,
+        user.last_name
+      ]
+      .filter(Boolean)
+      .join(" ") ||
+      "Client";
 
-    document
-      .getElementById(
-        "profileUsername"
-      )
-      .textContent=
-        user.username
-          ? "@"+user.username
-          : "—";
 
-    document
-      .getElementById(
-        "profileId"
-      )
-      .textContent=
-        user.id
-          ? String(user.id)
-          : "—";
+  document
+    .getElementById(
+      "profileUsername"
+    )
+    .textContent =
+      user.username
+        ? "@"+user.username
+        : "—";
 
-  }
+
+  document
+    .getElementById(
+      "profileId"
+    )
+    .textContent =
+      user.id
+        ? String(user.id)
+        : "—";
 
 }
 
-
-/* =====================================================
-   INITIALISATION
-===================================================== */
 
 renderProducts();
 

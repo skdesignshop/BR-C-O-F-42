@@ -65,6 +65,23 @@
     40%, 60% { transform: translate3d(6px, 0, 0); }
 }
 
+@keyframes lightSweep {
+  0% { left: -150%; }
+  15% { left: 250%; }
+  100% { left: 250%; }
+}
+
+@keyframes cardPulse {
+  0% { 
+    box-shadow: 0 0 0 transparent; 
+    border-color: var(--border); 
+  }
+  100% { 
+    box-shadow: inset 0 0 15px rgba(57, 255, 106, 0.05), 0 0 10px rgba(57, 255, 106, 0.15); 
+    border-color: rgba(57, 255, 106, 0.4); 
+  }
+}
+
 /* ==========================================================================
    3. RESET & CLASSES DE STRUCTURE GLOBALES
    ========================================================================== */
@@ -282,6 +299,7 @@ main {
   gap: 11px;
 }
 
+/* MISE A JOUR : Cartes avec jeux de lumière */
 .product-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -289,6 +307,21 @@ main {
   transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
   position: relative;
   overflow: hidden;
+  animation: cardPulse 3s infinite alternate;
+}
+
+.product-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(57, 255, 106, 0.2), transparent);
+  transform: skewX(-25deg);
+  animation: lightSweep 6s infinite;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .product-card:hover {
@@ -303,6 +336,7 @@ main {
   aspect-ratio: 1/1;
   background: var(--bg2);
   overflow: hidden;
+  z-index: 2;
 }
 
 .product-image {
@@ -349,6 +383,8 @@ main {
 
 .product-content {
   padding: 10px;
+  position: relative;
+  z-index: 2;
 }
 
 .product-name {
@@ -1391,6 +1427,16 @@ main {
 <div class="info-card">
 <h3>Nos réseaux</h3>
 <div class="socials">
+<a class="social" href="https://www.instagram.com/br_c_o_f_42_?stkn=ZTlpMW81a3kzZTRy" target="_blank">
+  <span class="social-icon" style="background: #E1306C; color: white;">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+    </svg>
+  </span>
+  <span>Instagram</span>
+</a>
 <a class="social" href="https://tutuduanyu.org/brcoff" target="_blank"><span class="social-icon"><img src="https://i.postimg.cc/dVrMH2Pf/IMG-7937.png" alt="Potato"></span><span>Potato</span></a>
 <a class="social" href="https://t.me/+4ZW_SA1oZHJlNTk0" target="_blank"><span class="social-icon"><img src="https://i.postimg.cc/PqVBN2mm/IMG-8963.webp" alt="Telegram"></span><span>Telegram</span></a>
 <a class="social" href="https://invite.viber.com/?g2=AQBFrjbI6LejqVWwOq2xt%2FxFCYeiXFG1PdbVZ0FvV5z0PvtAyHzR7ZGuJrnuSEwB" target="_blank"><span class="social-icon"><img src="https://i.postimg.cc/xTGhL0vT/IMG-8964.png" alt="Viber"></span><span>Viber</span></a>
@@ -1866,9 +1912,14 @@ function generateOrderText() {
 
 document.getElementById("submitOrder").onclick = ()=>{
   if(state.delivery==="delivery" && !document.getElementById("customerAddress").value.trim()){ toast("Indique ton adresse"); return; }
+  
   const telegramUrl = "https://t.me/Fenec421?text=" + encodeURIComponent(generateOrderText());
   closeCheckout();
-  if(tg) tg.openTelegramLink(telegramUrl); else window.open(telegramUrl, "_blank");
+  if(tg && tg.openLink) {
+    tg.openLink(telegramUrl); 
+  } else {
+    window.open(telegramUrl, "_blank");
+  }
   toast("Commande préparée (Telegram) ✓");
 };
 
@@ -1947,8 +1998,8 @@ function renderOptionsBuilder() {
   currentAdminOptions.forEach((opt, idx) => {
     const row = document.createElement("div"); row.className = "option-row";
     row.innerHTML = `
-      <input type="text" placeholder="Ex: 5g ou Unité" value="${opt.name}" style="flex:1;" oninput="currentAdminOptions[${idx}].name = this.value">
-      <input type="number" placeholder="Prix €" value="${opt.price}" style="width:75px;" oninput="currentAdminOptions[${idx}].price = this.value">
+      <input type="text" placeholder="Ex: 5g ou Unité" value="${opt.name}" style="flex:1;">
+      <input type="number" placeholder="Prix €" value="${opt.price}" style="width:75px;">
       <button type="button" onclick="removeOptionRow(${idx})">✖</button>
     `;
     container.appendChild(row);
@@ -2027,9 +2078,14 @@ document.getElementById("saveProductBtn").onclick = async () => {
   const category = document.getElementById("adminCategory").value.trim();
   const description = document.getElementById("adminDesc").value.trim();
   
-  const options = currentAdminOptions.filter(o => o.name.trim() !== "").map(o => ({
-    name: o.name.trim(), price: Number(o.price) || 0
-  }));
+  const options = [];
+  document.querySelectorAll('#adminOptionsBuilder .option-row').forEach(row => {
+    const optName = row.querySelector('input[type="text"]').value.trim();
+    const optPrice = Number(row.querySelector('input[type="number"]').value) || 0;
+    if(optName) {
+      options.push({ name: optName, price: optPrice });
+    }
+  });
 
   if(!name || !category){ toast("Nom et catégorie obligatoires ⚠️"); return; }
   if(options.length === 0){ toast("Il faut au moins un grammage/prix ⚠️"); return; }
